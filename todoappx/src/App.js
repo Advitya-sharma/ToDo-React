@@ -1,20 +1,20 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router,Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./styles.css";
 import ToDos from "./components/ToDos";
 import Submit from "./components/Submit";
 import Header from "./components/header/header";
-import axios from 'axios';
+import axios from "axios";
 import About from "./components/pages/about";
 class App extends Component {
   state = {
-    todos: [
-      
-    ]
+    todos: []
   };
 
-  componentWillMount(){
-    axios.get('https://jsonplaceholder.typicode.com/todos?_limit=10').then(res => this.setState({todos:res.data}))
+  UNSAFE_componentWillMount() {
+    axios
+      .get("https://jsonplaceholder.typicode.com/todos?_limit=10")
+      .then(res => this.setState({ todos: res.data }));
   }
   markComplete = id => {
     this.setState({
@@ -28,15 +28,20 @@ class App extends Component {
   };
 
   delToDo = id => {
-    axios.delete(`https://jsonplaceholder.typicode.com/todos/$(id)`).then(res=>this.setState({
-      todos: [...this.state.todos.filter(todo => todo.id !== id)]
-    }));
+    axios.delete(`https://jsonplaceholder.typicode.com/todos/$(id)`).then(res =>
+      this.setState({
+        todos: [...this.state.todos.filter(todo => todo.id !== id)]
+      })
+    );
   };
 
   addToDo = title => {
-    axios.post('https://jsonplaceholder.typicode.com/todos',{
-      title,completed:false
-    }).then(res=>this.setState({ todos: [...this.state.todos, res.data] }));
+    axios
+      .post("https://jsonplaceholder.typicode.com/todos", {
+        title,
+        completed: false
+      })
+      .then(res => this.setState({ todos: [...this.state.todos, res.data] }));
   };
 
   render() {
@@ -44,7 +49,8 @@ class App extends Component {
       <Router>
         <div className="App">
           <div className="container" style={containerStyle}>
-            <Route exact
+            <Route
+              exact
               path="/"
               render={props => (
                 <React.Fragment>

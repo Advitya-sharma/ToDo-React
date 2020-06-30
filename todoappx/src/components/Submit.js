@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class Submit extends Component {
   state = {
@@ -27,5 +28,9 @@ class Submit extends Component {
     );
   }
 }
+
+Submit.prototypes = {
+  Submit: PropTypes.func.isRequired
+};
 
 export default Submit;

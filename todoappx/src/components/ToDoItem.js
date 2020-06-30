@@ -40,7 +40,9 @@ const btnStyle = {
 };
 
 ToDoItem.prototypes = {
-  todos: PropTypes.object.isRequired
+  todos: PropTypes.object.isRequired,
+  markComplete :PropTypes.func.isRequired,
+  delToDo: PropTypes.func.isRequired
 };
 
 export default ToDoItem;

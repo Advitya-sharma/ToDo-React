@@ -16,7 +16,9 @@ class ToDos extends Component {
 }
 
 ToDos.prototypes = {
-  todos: PropTypes.array.isRequired
+  todos: PropTypes.array.isRequired,
+  markComplete :PropTypes.func.isRequired,
+  delToDo: PropTypes.func.isRequired
 };
 
 export default ToDos;
